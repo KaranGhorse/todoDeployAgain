@@ -13,14 +13,14 @@
 <body>
 
     <main class="text-white w-full h-screen bg-slate-900 flex flex-col justify-center items-center relative">
-        <a href="/logout" class="text-3xl absolute right-5 top-4 text-white">logout</a>
+        <a href="/logout" class="text-xl absolute right-5 top-4 text-white">logout <i class="fa-solid fa-right-from-bracket"></i></a>
 
         <div class="topper w-full flex flex-col h-[350px] items-center">
-            <h1 class="text-3xl my-4">Hlw <span>
+            <h1 class="text-3xl mt-12 my-4">Hlw <span>
                     <%= user.fullname %>
                 </span> Your todos are here...</h1>
 
-            <div class="input-box w-[400px]">
+            <div class="input-box w-[300px]">
                 <form class="flex flex-col gap-4" action="/todo" method="post">
                     <input required class="bg-transparent border outline-none rounded-md px-4 py-2 " type="text"
                         placeholder="Add a Task Title ....." name="work">
