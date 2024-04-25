@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do list</title>
+    <link rel="stylesheet" href="/output.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+    <main class="text-white w-full h-screen bg-slate-900 flex flex-col justify-center items-center relative">
+        <a href="/logout" class="text-3xl absolute right-5 top-4 text-white">logout</a>
+
+        <div class="topper w-full flex flex-col h-[350px] items-center">
+            <h1 class="text-3xl my-4">Hlw <span>
+                    <%= user.fullname %>
+                </span> Your todos are here...</h1>
+
+            <div class="input-box w-[400px]">
+                <form class="flex flex-col gap-4" action="/todo" method="post">
+                    <input required class="bg-transparent border outline-none rounded-md px-4 py-2 " type="text"
+                        placeholder="Add a Task Title ....." name="work">
+                    <textarea required class="resize-none border outline-none rounded-md px-4 py-2  bg-transparent"
+                        placeholder="Add a Task Desc....." name="desc" cols="20" rows="5"></textarea>
+                    <button class="py-2 px-4 cursor-pointer rounded-md bg-blue-700 font-semibold" type="submit">add
+                        task</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="bottom w-full h-full overflow-auto flex flex-wrap gap-11 py-5 px-12">
+            <% todo.forEach(tod => { %>
+                <div class="card w-80 h-56 bg-slate-800 rounded-md px-3 py-3">
+                <form action="">
+                    <h3 class="title bg-transparent rounded-sm first-letter:capitalize text-xl font-semibold"><%= tod.title %></h3>
+                    <div class="desc relative resize-none w-full h-[8.5rem] bg-transparent mt-2 first-letter:capitalize px-3 overflow-hidden  text-gray-400">
+                        <%= tod.work %>
+                        
+                        </div>
+
+                    <hr>
+                    <footer class="w-full text-xl h-8 flex bottom-0 justify-between items-center">
+                        <p class="text-sm text-gray-500">
+                            <%= tod.createdAt.toLocaleDateString("en-US", {year: "numeric",month: "2-digit",day: "2-digit"}); %>
+                        </p>
+                        <% if (tod.complete) { %>
+                            <p class="text-2xl text-red-600">completed</p>
+                        <% } %>
+
+                        <div class="comp-edit flex justify-center gap-4 items-center">
+                            <% if (!tod.complete) { %>
+                                
+                                <a href="/todo/comp/<%= tod._id %>"><i class="comp-todo fa-regular fa-square-check cursor-pointer"></i></a>
+                            <% } %>
+                            <a href="/todo/del/<%= tod._id %>"><i class="del-todo fa-regular fa-trash-can"></i></a>
+                        </div>
+                    </footer>
+                </form>
+            </div>
+         <%   }); %>
+
+            
+                                                
+        </div>
+
+    </main>
+
+    <script>
+        
+let dones = document.querySelectorAll('.comp-todo')
+// let edits = document.querySelectorAll('.edit-todo')
+let dels = document.querySelectorAll('.del-todo')
+
+// console.log("j");
+// dones.forEach( done => {
+//     done.addEventListener('click',(e)=>{
+//         console.log("hello");
+//         e.preventDefault();
+//         e.target.parentElement.parentElement.parentElement.submit()
+        
+//     })
+// })
+
+// dels.forEach( del => {
+//     del.addEventListener('click',(e)=>{
+//         e.preventDefault();
+//         let form = e.target.parentElement.parentElement.parentElement;
+//         let formElem = document.querySelector(`.${form} `)
+//         // console.log();
+//     })
+// })
+
+    </script>
+</body>
+
+</html>
+
+
+<!-- <div id="main">
+    
+    
+    <div class="bottom">
+        <% if (todo.length > 0) { %>
+            <% let i =1; todo.forEach(todo => { %>
+                <% if (!todo.complete) { %>
+                <div class="item">
+                    <h4 class="task"><%= i+'.  ' + todo.work %></h4>
+                    <div class="task-action">
+                        <form class="updateform" action="/todo/<%= todo._id %>" method="post">
+                           <i class="ri-check-line check"></i>                 
+                        </form>
+                        <form action="/todo/<%= todo._id %>" method="delete">
+                            <i class="ri-close-fill close"></i>
+                        </form>
+                    </div>
+                    </div>
+                <% } else { %>
+                    <div class="item comp">
+                        <h4 class="task"><%= i+'.  ' + todo.work %></h4>
+                        <h4 class="comp-text"><div></div><p>completed</p></h4>
+                        <div class="task-action">
+                            <form action="/todo/<%= todo._id %>" method="delete">
+                                <i class="ri-close-fill close"></i>
+                            </form>
+                        </div>
+                        </div>
+                    <% } %>   
+            <% i++; });  %>    
+        <% } %>
+    </div>
+</div> -->

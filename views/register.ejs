@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo App</title>
+  <link rel="stylesheet" href="/output.css">
+</head>
+
+<body>
+
+ <main class="text-white w-full h-screen bg-slate-900 flex justify-center items-center relative">
+  <div class="container w-[400px] h-fit bg-slate-800 rounded-lg px-4 py-4">
+    <div class="content ">
+      <h3 class="header text-xl font-semibold text-center mb-4">Make account to see more</h3>
+      
+      <form action="/register" method="post" class="flex flex-col gap-4">
+        <input required class="w-full py-2 px-4 bg-transparent rounded-md border outline-none" type="text" name="fullname" placeholder="Full Name" />
+        <input required class="w-full py-2 px-4 bg-transparent rounded-md border outline-none" type="text" name="username" placeholder="Username" />
+        <input required class="w-full py-2 px-4 bg-transparent rounded-md border outline-none" type="email" name="email" placeholder="Email" />
+        <input required class="w-full py-2 px-4 bg-transparent rounded-md border outline-none" type="password" name="password" placeholder="Password" />
+        <input class="w-full py-2 px-4 cursor-pointer rounded-md bg-blue-700 font-semibold" type="submit" class="btn int" value="Sign-up">
+      </form>
+      
+      <footer class="mt-2">
+        <hr />
+        <p class="text-center my-2">Allready on Todo App<a class="text-blue-300 font-bold" href="/"> Log in</a></p>
+      </footer>
+    </div>
+  </div>
+  <a href="/" class="upbtn absolute top-[10%] left-[10%] py-2 px-8 cursor-pointer rounded-md bg-blue-700 font-semibold">Login</a>
+ </main>
+
+
+</body>
+
+</html>
